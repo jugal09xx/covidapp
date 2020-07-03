@@ -1,0 +1,126 @@
+<%- include("partials/header") %>
+<div class="container body">
+	<h1 class="headers display-4 ml-auto"><i class="fas fa-globe-americas"></i>
+	 World Statistics
+	</h1>
+	<div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+			<div class="card">
+			  <div class="card-body">
+				<h5 class="card-title">Total Cases</h5>
+				<h3 class="card-title number cases"><span class="count"><%= parsedData["Global"]["TotalConfirmed"] %></span></h3>
+				<h6 class="card-subtitle mb-2 text-muted">Total confirmed cases around the world till date.</h6>
+			  </div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+			<div class="card">
+			  <div class="card-body">
+				<h5 class="card-title">Total Recovered</h5>
+				<h3 class="card-title recovered number count"><%= parsedData["Global"]["TotalRecovered"] %></h3>
+				<h6 class="card-subtitle mb-2 text-muted">Total number of recovered patients the world till date.</h6>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+			<div class="card">
+			  <div class="card-body">
+				<h5 class="card-title">Total Deaths</h5>
+				<h3 class="card-title number death count"><%= parsedData["Global"]["TotalDeaths"] %></h3>
+				<h6 class="card-subtitle mb-2 text-muted">Total deaths around the world till date.</h6>
+			  </div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+			<div class="card">
+			  <div class="card-body">
+				<h5 class="card-title">New Cases</h5>
+				<h3 class="card-title cases number count">+<%= parsedData["Global"]["NewConfirmed"] %></h3>
+				<h6 class="card-subtitle mb-2 text-muted">Cases detected recently around the world.</h6>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<h2 class="headers country-header">
+		<i class="fas fa-flag"></i> Country Statistics
+	</h2>
+	<form method="GET" action="/">
+		<select class="custom-select" type="select" name="country">
+			<option>Select Country<i class="fas fa-angle-down"></i></option>
+		<% parsedData["Countries"].forEach(function(stat){ %>
+			<option><%= stat["Country"] %></option>
+		<% }); %>
+		</select>
+		<input class="btn btn-lg" style="display: block; margin: auto;" type="submit">
+	</form>
+	<% parsedData["Countries"].forEach(function(data){ %>
+		<% if( data["Country"] === country){ %>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+						<div class="card">
+						  <div class="card-body">
+							<h5 class="card-title">Country</h5>
+							<h6 class="card-title number"><img src="https://www.countryflags.io/<%= data["CountryCode"] %>/flat/64.png">  <%= data["CountryCode"] %></h6>
+							<h6 class="card-subtitle mb-2 text-muted">Last Updated: <%= data["Date"].toString().substring(0,10) %>, <%=data["Date"].toString().substring(11,16)%> Hrs</h6>
+						  </div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+						<div class="card">
+						  <div class="card-body">
+							<h5 class="card-title">Total Cases</h5>
+							<h3 class="card-title cases number count"><%= data["TotalConfirmed"] %></h3>
+							<h6 class="card-subtitle mb-2 text-muted">Confirmed cases in the country till date.</h6>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+						<div class="card">
+						  <div class="card-body">
+							<h5 class="card-title">Total Recovered</h5>
+							<h3 class="card-title recovered number count"><%= data["TotalRecovered"] %></h3>
+							<h6 class="card-subtitle mb-2 text-muted">Total recovered patients in the country.</h6>
+						  </div>
+						</div>
+					</div>
+						<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+						<div class="card">
+						  <div class="card-body">
+							<h5 class="card-title">Total Deaths</h5>
+							<h3 class="card-title death number count"><%= data["TotalDeaths"] %></h3>
+							<h6 class="card-subtitle mb-2 text-muted">Total deaths in the country till date.</h6>
+						  </div>
+						</div>
+					</div>
+				</div>	
+		<% } %>
+	  <% }); %>
+</div>
+<script>
+	$('.count').each(function () {
+		$(this).prop('Counter',0).animate({
+			Counter: $(this).text()
+		}, {
+			duration: 3000,
+			easing: 'swing',
+			step: function (now) {
+				$(this).text(Math.ceil(now));
+			}
+		});
+	});
+</script>
+<%- include("partials/footer") %>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+
+
+
