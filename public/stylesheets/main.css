@@ -121,3 +121,11 @@ img{
 	margin-top:5vh;
 	margin-bottom: 5vh;
 }
+.icon{
+	color:slategray;
+	margin: auto 2%;
+	height: 4vh;
+}
+.icon:hover{
+	color:white;
+}
