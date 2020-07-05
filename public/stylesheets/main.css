@@ -129,3 +129,21 @@ img{
 .icon:hover{
 	color:white;
 }
+.body-2{
+	margin-top: 5vh;
+}
+.q-header{
+	margin-top: 5vh;
+}
+.body-2{
+	text-align: justify;
+}
+::-webkit-scrollbar{
+	width: 2vh;
+}
+::-webkit-scrollbar-track{
+	background:#121212;
+}
+::-webkit-scrollbar-thumb {
+  background: #1db954;
+}
