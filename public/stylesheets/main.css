@@ -80,14 +80,14 @@ body {
 	color: #1db954;
 	border: 1px solid slategray;
 }
-.btn{
+.btn-submit{
 	outline:none;
 	color: slategray;
 	border: 1px solid slategray;
 	transition: 0.3s ease-in-out;
 	border-radius: 25px;
 }
-.btn:hover{
+.btn-submit:hover{
 	outline:none;
 	color:black;
 	background: #1db954;
@@ -146,4 +146,24 @@ img{
 }
 ::-webkit-scrollbar-thumb {
   background: #1db954;
+}
+section{
+	height:100%;
+	position: relative;
+}
+html{
+	scroll-behavior: smooth;
+}
+#scrollbtn{
+	position: relative;
+	border: 1px solid slategray;
+	color: slategray;
+	border-radius:25px;
+	margin-bottom:3vh;
+	animation: button 2.5s infinite ease-in;
+}
+@keyframes button{
+	0% {border: 1px solid slategray; color:slategray;}
+	50% {border: 1px solid white; color:white;}
+	100% {border: 1px solid slategray; color:slategray;}
 }

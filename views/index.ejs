@@ -1,51 +1,53 @@
 <%- include("partials/header") %>
 <div class="container body">
-	<h1 class="headers display-4 ml-auto"><i class="fas fa-globe-americas"></i>
-	 World Statistics
-	</h1>
-	<div>
-	</div>
-	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-			<div class="card">
-			  <div class="card-body">
-				<h5 class="card-title">Total Cases</h5>
-				<h3 class="card-title number cases"><span class="count"><%= parsedData["Global"]["TotalConfirmed"] %></span></h3>
-				<h6 class="card-subtitle mb-2 text-muted">Total confirmed cases around the world till date.</h6>
-			  </div>
+	<section id="section-1">
+		<a class="btn" id="scrollbtn" href="#section-2">View stats by country <i class="fas fa-arrow-down"></i></a>
+			<h1 class="headers display-4 ml-auto"><i class="fas fa-globe-americas"></i>
+			 World Statistics
+			</h1>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Total Cases</h5>
+						<h3 class="card-title number cases"><span class="count"><%= parsedData["Global"]["TotalConfirmed"] %></span></h3>
+						<h6 class="card-subtitle mb-2 text-muted">Total confirmed cases around the world till date.</h6>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Total Recovered</h5>
+						<h3 class="card-title recovered number count"><%= parsedData["Global"]["TotalRecovered"] %></h3>
+						<h6 class="card-subtitle mb-2 text-muted">Total recovered patients around the world till date.</h6>
+					  </div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-			<div class="card">
-			  <div class="card-body">
-				<h5 class="card-title">Total Recovered</h5>
-				<h3 class="card-title recovered number count"><%= parsedData["Global"]["TotalRecovered"] %></h3>
-				<h6 class="card-subtitle mb-2 text-muted">Total number of recovered patients the world till date.</h6>
-			  </div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Total Deaths</h5>
+						<h3 class="card-title number death count"><%= parsedData["Global"]["TotalDeaths"] %></h3>
+						<h6 class="card-subtitle mb-2 text-muted">Total deaths around the world till date.</h6>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">New Cases</h5>
+						<h3 class="card-title cases number count">+<%= parsedData["Global"]["NewConfirmed"] %></h3>
+						<h6 class="card-subtitle mb-2 text-muted">Cases detected recently around the world.</h6>
+					  </div>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-			<div class="card">
-			  <div class="card-body">
-				<h5 class="card-title">Total Deaths</h5>
-				<h3 class="card-title number death count"><%= parsedData["Global"]["TotalDeaths"] %></h3>
-				<h6 class="card-subtitle mb-2 text-muted">Total deaths around the world till date.</h6>
-			  </div>
-			</div>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-			<div class="card">
-			  <div class="card-body">
-				<h5 class="card-title">New Cases</h5>
-				<h3 class="card-title cases number count">+<%= parsedData["Global"]["NewConfirmed"] %></h3>
-				<h6 class="card-subtitle mb-2 text-muted">Cases detected recently around the world.</h6>
-			  </div>
-			</div>
-		</div>
-	</div>
-	<h2 class="headers country-header">
+	</section>
+	<section id="section-2">
+			<h2 class="headers country-header">
 		<i class="fas fa-flag"></i> Country Statistics
 	</h2>
 	<form method="GET" action="/">
@@ -55,7 +57,7 @@
 			<option><%= stat["Country"] %></option>
 		<% }); %>
 		</select>
-		<input class="btn btn-lg" style="display: block; margin: auto;" type="submit">
+		<input class="btn btn-submit btn-lg" style="display: block; margin: auto;" type="submit">
 	</form>
 	<% parsedData["Countries"].forEach(function(data){ %>
 		<% if( data["Country"] === country){ %>
@@ -98,7 +100,8 @@
 						  </div>
 						</div>
 					</div>
-				</div>	
+				</div>
+	</section>	
 		<% } %>
 	  <% }); %>
 </div>
