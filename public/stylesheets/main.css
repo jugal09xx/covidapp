@@ -160,7 +160,7 @@ html{
 	color: slategray;
 	border-radius:25px;
 	margin-bottom:3vh;
-	animation: button 2.5s infinite ease-in;
+	animation: button 2.5s infinite ease-in-out;
 }
 @keyframes button{
 	0% {border: 1px solid slategray; color:slategray;}
