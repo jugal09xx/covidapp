@@ -168,9 +168,8 @@ html{
 	100% {border: 2px solid slategray; color:slategray;}
 }
 .img{
-  width: 15rem;
-  max-width: 20rem;
+  width: 20rem;
   height: 10rem;
-  max-height: 15rem;
   margin-bottom: 3vh;
+  justify-content: center;
 }
