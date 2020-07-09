@@ -25,6 +25,15 @@ app.get("/info", function(req, res){
 	res.render("info");
 });
 
+app.get("/news", function(req, res){
+	request("https://newsapi.org/v2/top-headlines?country=in&q=covid&apiKey=f3e9a552082b48ab827e43b810e7ea38", function(error, response, body){
+		if(!error && response.statusCode == 200){
+			var newsData = JSON.parse(body);
+			res.render("news", {newsData: newsData});
+		}
+	})
+});
+
 app.listen(process.env.PORT || 3000, process.env.IP, function(){
 	console.log("server running...");
 });

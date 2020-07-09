@@ -156,14 +156,21 @@ html{
 }
 #scrollbtn{
 	position: relative;
-	border: 1px solid slategray;
+	border: 2px solid slategray;
 	color: slategray;
 	border-radius:25px;
 	margin-bottom:3vh;
 	animation: button 2.5s infinite ease-in-out;
 }
 @keyframes button{
-	0% {border: 1px solid slategray; color:slategray;}
-	50% {border: 1px solid white; color:white;}
-	100% {border: 1px solid slategray; color:slategray;}
+	0% {border: 2px solid slategray; color:slategray;}
+	50% {border: 2px solid white; color:white;}
+	100% {border: 2px solid slategray; color:slategray;}
+}
+.img{
+  width: 15rem;
+  max-width: 20rem;
+  height: 10rem;
+  max-height: 15rem;
+  margin-bottom: 3vh;
 }
