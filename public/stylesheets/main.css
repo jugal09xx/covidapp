@@ -42,7 +42,7 @@ body {
 .headers{
 	margin-top:2vh;
 	font-weight:600;
-	font-size: 7vh;
+	font-size: 6.75vh;
 }
 .card{
 	background: #121212;
@@ -172,4 +172,11 @@ html{
   height: 10rem;
   margin-bottom: 3vh;
   justify-content: center;
+}
+.jugal{
+	width: 15rem;
+	height: auto;
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	border-radius: 50%;
 }
